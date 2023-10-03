@@ -12,9 +12,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <form onSubmit={btProximo} className="App-form-home">
-          <div>
           <img src='13810092.jpg' height='100'></img>
-          </div>
           <div>
             <p>Experiências sociais da vida real</p>
           </div>
