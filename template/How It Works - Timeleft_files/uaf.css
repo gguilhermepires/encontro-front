@@ -1,0 +1,55 @@
+				@font-face {
+					font-family: 'fixel-text-medium';
+					src: url('https://timeleft.com/wp-content/uploads/useanyfont/2671Fixel-Text-Medium.woff2') format('woff2'),
+						url('https://timeleft.com/wp-content/uploads/useanyfont/2671Fixel-Text-Medium.woff') format('woff');
+					font-weight: 500; font-style: normal; font-display: auto;
+				}
+
+				.fixel-text-medium{font-family: 'fixel-text-medium' !important;}
+
+						@font-face {
+					font-family: 'fixel-text-black';
+					src: url('https://timeleft.com/wp-content/uploads/useanyfont/3030Fixel-text-black.woff2') format('woff2'),
+						url('https://timeleft.com/wp-content/uploads/useanyfont/3030Fixel-text-black.woff') format('woff');
+					font-weight: 900; font-style: normal; font-display: auto;
+				}
+
+				.fixel-text-black{font-family: 'fixel-text-black' !important;}
+
+						@font-face {
+					font-family: 'alias-union';
+					src: url('https://timeleft.com/wp-content/uploads/useanyfont/3034Alias-Union.woff2') format('woff2'),
+						url('https://timeleft.com/wp-content/uploads/useanyfont/3034Alias-Union.woff') format('woff');
+					font-weight: 700; font-style: italic; font-display: auto;
+				}
+
+				.alias-union{font-family: 'alias-union' !important;}
+
+						@font-face {
+					font-family: 'modak';
+					src: url('https://timeleft.com/wp-content/uploads/useanyfont/5618Modak.woff2') format('woff2'),
+						url('https://timeleft.com/wp-content/uploads/useanyfont/5618Modak.woff') format('woff');
+					font-weight: 400; font-style: normal; font-display: auto;
+				}
+
+				.modak{font-family: 'modak' !important;}
+
+						@font-face {
+					font-family: 'arial-rounded-bold';
+					src: url('https://timeleft.com/wp-content/uploads/useanyfont/3220Arial-Rounded-Bold.woff2') format('woff2'),
+						url('https://timeleft.com/wp-content/uploads/useanyfont/3220Arial-Rounded-Bold.woff') format('woff');
+					font-weight: 400; font-style: normal; font-display: auto;
+				}
+
+				.arial-rounded-bold{font-family: 'arial-rounded-bold' !important;}
+
+						@font-face {
+					font-family: 'yrt-bite-the-bullet';
+					src: url('https://timeleft.com/wp-content/uploads/useanyfont/1366YRT-Bite-The-Bullet.woff2') format('woff2'),
+						url('https://timeleft.com/wp-content/uploads/useanyfont/1366YRT-Bite-The-Bullet.woff') format('woff');
+					font-weight: 400; font-style: normal; font-display: auto;
+				}
+
+				.yrt-bite-the-bullet{font-family: 'yrt-bite-the-bullet' !important;}
+
+		

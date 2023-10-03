@@ -1,0 +1,81 @@
+.elementor-203 .elementor-element.elementor-element-31c2647{--display:flex;--min-height:100vh;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--justify-content:center;--background-transition:0.3s;--margin-top:-150px;--margin-right:0px;--margin-bottom:0px;--margin-left:0px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}.elementor-203 .elementor-element.elementor-element-7c4b6fd{text-align:center;color:var( --e-global-color-a31ff23 );font-family:"FixelText", Sans-serif;font-size:27px;font-weight:400;}.elementor-203 .elementor-element.elementor-element-82597f6{text-align:center;color:#FFFFFF;font-family:"FixelText", Sans-serif;font-size:19px;font-weight:400;}.elementor-203 .elementor-element.elementor-element-dc699e0{text-align:center;color:var( --e-global-color-a31ff23 );font-family:"FixelText", Sans-serif;font-size:27px;font-weight:400;}.elementor-203 .elementor-element.elementor-element-74aca5a .elementor-button{font-family:"FixelText", Sans-serif;font-size:24px;font-weight:900;fill:var( --e-global-color-text );color:var( --e-global-color-text );background-color:var( --e-global-color-a31ff23 );border-radius:4px 4px 4px 4px;padding:10px 10px 10px 10px;}.elementor-203 .elementor-element.elementor-element-74aca5a .elementor-button:hover, .elementor-203 .elementor-element.elementor-element-74aca5a .elementor-button:focus{background-color:#D37700;}.elementor-203 .elementor-element.elementor-element-74aca5a > .elementor-widget-container{margin:-7px 0px 0px 0px;}@media(max-width:1024px){.elementor-203 .elementor-element.elementor-element-31c2647{--padding-top:42px;--padding-right:42px;--padding-bottom:42px;--padding-left:42px;}}@media(min-width:768px){.elementor-203 .elementor-element.elementor-element-31c2647{--content-width:801px;}}@media(max-width:767px){.elementor-203 .elementor-element.elementor-element-31c2647{--margin-top:-10px;--margin-right:0px;--margin-bottom:0px;--margin-left:0px;--padding-top:0px;--padding-right:24px;--padding-bottom:0px;--padding-left:24px;}.elementor-203 .elementor-element.elementor-element-7c4b6fd{font-size:24px;line-height:1.3em;}.elementor-203 .elementor-element.elementor-element-dc699e0{font-size:24px;}}/* Start Custom Fonts CSS */@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 900;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Black.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Black-1.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Regular.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 700;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-SemiBold.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-SemiBold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 800;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-ExtraBold.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 600;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-SemiBold-1.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-SemiBold-1.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: bold;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Bold.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Thin.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 100;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Thin.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Thin-1.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 200;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-ExtraLight.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 300;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Light.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Light.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FixelText';
+	font-style: normal;
+	font-weight: 500;
+	font-display: auto;
+	src: url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Medium.woff2') format('woff2'),
+		url('https://timeleft.com/wp-content/uploads/2023/08/FixelText-Medium.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */
