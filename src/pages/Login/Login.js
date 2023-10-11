@@ -1,67 +1,117 @@
-import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import LoaderComponent from '../../helpers/loader/loaderComponent';
 
-function App() {
-  const [email, setEmail] = useState();
-  async function btProximo(e) {
-    e.preventDefault();
-    let data = await fetch(`http://localhost:3001/api/v1/login/v1?email=${email}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+import 'react-toastify/dist/ReactToastify.css';
+import {
+    Box,
+    Button,
+    Input,
+    FormControl,
+    FormLabel,
+    Stack,
+    Heading,
+    Text,
+} from '@chakra-ui/react';
+
+export default function LoginPage() {
+    const history = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loader, setShowHideLoader] = useState(false);
+
+    const formValidation = () => {
+        let isValid = true;
+
+        if (!email) {
+            toast.warn('Username is required');
+            isValid = false
         }
-      });
-    data = await data.json();
-    if (data.data === null) {
-      // redirect to signUp page
-      console.log('line 18','cadastro');
-      
-    } else {
-      console.log('login2 ', data.data);
-      // redirect to login page
+
+        if (!password) {
+            toast.warn('User password is required');
+            isValid = false
+        }
+
+        return isValid
     }
-  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <form onSubmit={btProximo} className="App-form-home">
-          <div>
-          </div>
-          <div>
-            <p>Login</p>
-          </div>
-          <div>
-          <label>Email</label>
-            <input
-              id='email'
-              type='text'
-              placeholder='Digite seu email'
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              id='email'
-              type='text'
-              placeholder='Digite seu password'
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <p>Esqueceu sua senha ?</p>
-          </div>
-          <div>
-            <input type='submit' value='Próximo' />
-          </div>
-        </form>
+    const submitUserLogin = async () => {
+        try {
+            // before submit, we need to check validation
+            if (formValidation()) {
 
-      </header>
-      <p>Não tem uma conta ? </p> <a href=''>criar conta</a>
-    </div>
-  );
+                // we need to add loading spinner to wait server to response.
+                // let create loader component
+                setShowHideLoader(true);
+                const reqBody = {
+                    "username": email,
+                    "password": password
+                }
+                const response = await axios.post('http://localhost:3001/api/v1/login', reqBody);
+                if (response) {
+                    console.log('teste', response.data)
+                    // here we need to store data as temp and navigate to home page
+                    history.push({
+                        pathname: '/home',
+                        state: { userData: response.data }
+                    });
+
+                    // now we navigated to home but with static data.
+                    // let us go to home page.
+                    // data will go to home page as props.
+                }
+            }
+
+        }
+        catch (e) {
+            // log error in case of invalid user login username and password
+            // we will use Toaster to show the error to user
+            toast.error(e.response.data.message);
+        }
+        finally {
+            setShowHideLoader(false);
+        }
+    }
+
+    return (
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100vh"
+        >
+            <Stack spacing={4} width="300px">
+                <Heading textAlign="center">Login</Heading>
+                <FormControl id="email" isRequired>
+                    <FormLabel>Email</FormLabel>
+                    <Input
+                        type="email"
+                        placeholder="Seu endereço de email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </FormControl>
+                <FormControl id="password" isRequired>
+                    <FormLabel>Senha</FormLabel>
+                    <Input
+                        type="password"
+                        placeholder="Sua senha"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </FormControl>
+                <Button colorScheme="teal" size="lg" onClick={() => submitUserLogin()}>
+                    Entrar
+                </Button>
+                <Text textAlign="center">
+                    Ainda não tem uma conta? <a onClick={() => submitUserLogin()} >Registre-se</a>
+                </Text>
+            </Stack>
+            <ToastContainer />
+            {loader && <LoaderComponent />}
+        </Box>
+    )
 }
-
-export default App;
