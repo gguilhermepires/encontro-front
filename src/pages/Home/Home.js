@@ -1,49 +1,39 @@
+import React from "react";
+import { Box, Container, SimpleGrid } from "@chakra-ui/react";
+import Header from "../../components/Header/Header";
+import Card from "../../components/Card/Card";
 
-import { Outlet } from "react-router-dom";
-function Home() {
+const cardsData = [
+  {
+    imageUrl: "/card1.png",
+    title: "Card 1",
+    description: "Descrição do Card 1",
+  },
+  {
+    imageUrl: "/card2.png",
+    title: "Card 2",
+    description: "Descrição do Card 2",
+  },
+  {
+    imageUrl: "/card3.png",
+    title: "Card 3",
+    description: "Descrição do Card 3",
+  },
+];
+
+const Home = () => {
   return (
-    <div style={{
-      marginLeft: '4rem',
-      fontSize: '20px',
-      padding: '20px',
-      backgroundColor: 'salmon',
-      color: 'white',
-    }}>
-      <h1>header </h1>
-
-      <div>
-        <h1>select city </h1>
-        <h1>Junte se a gente para uma noite inesquecivel com o seu grupo compativel
-          em
-        </h1>
-        <h1>data:quaeta , mes, dia, hora </h1>
-
-        <button>Reservar meu assento</button>
-        <h1>Falta 3 dias , 5 horas e 33 minutos para reservar </h1>
-
-      </div>
-
-
-      <div>
-        depois de resevador
-        <h1>cartao reservado
-          seu assento foi confimado
-          data
-          cidade
-        </h1>
-        <h1>Composição do grupo </h1>
-        <h1>restaurante </h1>
-        <h1>Feedback </h1>
-
-      </div>
-
-
-
-
-
-      <Outlet />
-    </div>
+    <Box>
+      <Header />
+      <Container maxW="container.lg" mt={8}>
+        <SimpleGrid columns={1} spacing={8}>
+          {cardsData.map((card, index) => (
+            <Card key={index} {...card} />
+          ))}
+        </SimpleGrid>
+      </Container>
+    </Box>
   );
-}
+};
 
 export default Home;

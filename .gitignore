@@ -2,3 +2,4 @@ node_modules
 dist
 .env
 bun.lockb
+src/components/Header/Header.js
