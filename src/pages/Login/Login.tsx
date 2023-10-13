@@ -15,12 +15,15 @@ import {
     Heading,
     Text,
 } from '@chakra-ui/react';
+import { useContext } from "react";
+import { Context } from '../../contexts/AuthContext';
 
 export default function LoginPage() {
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loader, setShowHideLoader] = useState(false);
+    const { updateLoginContext} = useContext(Context);
 
     const formValidation = () => {
         let isValid = true;
@@ -40,9 +43,9 @@ export default function LoginPage() {
 
     const submitUserLogin = async () => {
         try {
+            
             // before submit, we need to check validation
             if (formValidation()) {
-
                 // we need to add loading spinner to wait server to response.
                 // let create loader component
                 setShowHideLoader(true);
@@ -50,26 +53,31 @@ export default function LoginPage() {
                     "username": email,
                     "password": password
                 }
-                const response = await axios.post('http://localhost:3001/api/v1/login', reqBody);
-                if (response) {
-                    console.log('teste', response.data)
-                    // here we need to store data as temp and navigate to home page
-                    history.push({
-                        pathname: '/home',
-                        state: { userData: response.data }
-                    });
+                updateLoginContext( {
+                    "username": email,
+                    "password": password
+                })
+                history('/')
+                // const response = await axios.post('http://localhost:3001/api/v1/login', reqBody);
+                // if (response) {
+                //     console.log('teste', response.data)
+                //     // here we need to store data as temp and navigate to home page
+                //     history.push({
+                //         pathname: '/home',
+                //         state: { userData: response.data }
+                //     });
 
-                    // now we navigated to home but with static data.
-                    // let us go to home page.
-                    // data will go to home page as props.
-                }
+                //     // now we navigated to home but with static data.
+                //     // let us go to home page.
+                //     // data will go to home page as props.
+                // }
             }
 
         }
         catch (e) {
             // log error in case of invalid user login username and password
             // we will use Toaster to show the error to user
-            toast.error(e.response.data.message);
+            toast.error(e);
         }
         finally {
             setShowHideLoader(false);

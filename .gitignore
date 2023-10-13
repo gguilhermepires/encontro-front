@@ -3,3 +3,5 @@ dist
 .env
 bun.lockb
 src/components/Header/Header.js
+old
+build
