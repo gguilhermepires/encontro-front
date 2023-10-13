@@ -14,8 +14,8 @@ import { setCookie } from '../utils/cookies';
 function Routes() {
   const { user } = useAuth();
 
-  if (!user) setCookie('redirect', { pathname: window.location.pathname });
-
+  if (!user) setCookie('redirect', { pathname: 'login'});
+console.log('linha 18',user);
   return (
     <BrowserRouter>
       <RoutesSwitch>
@@ -47,10 +47,10 @@ function Routes() {
             <Route
               path="*"
               element={
-                <Navigate to={`/?redirect=${window.location.pathname}`} />
+                <Navigate to={`/login`} />
               }
             />
-            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
           </>
         )}
         <Route path="/health" element={<Health />} />
