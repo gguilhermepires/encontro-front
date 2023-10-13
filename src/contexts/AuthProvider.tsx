@@ -12,13 +12,14 @@ import { useCookies } from 'react-cookie';
 
 import { refreshToken as RefreshTokenRequest } from '../services/refreshToken';
 import { AuthCookie, CookieOptions, User } from '../types/auth';
-import { getCookie } from '../utils/cookies';
+import { getCookie, setCookie } from '../utils/cookies';
 
 interface AuthContextData {
-  user: User | null;
+  user: User | undefined;
   accessToken: string;
   refreshToken: string;
   version: { application: string; api: string };
+  createCookie: (data: any) => void;
   setAuthCookie: (
     name: 'Authorization',
     value: AuthCookie['Authorization'],
@@ -39,7 +40,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     'Authorization',
     AuthCookie
   >(['Authorization']);
-  const [user, setUser] = useState<User | null>(authCookie.Authorization?.user);
+  const [user, setUser] = useState<User | undefined>(authCookie.Authorization?.user);
   const [version, setVersion] = useState<{
     application: string;
     api: string;
@@ -59,7 +60,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setAccessToken(authCookie.Authorization.accessToken);
       setRefreshToken(authCookie.Authorization.refreshToken.id);
     } else {
-      setUser(null);
+      setUser(undefined);
     }
   }, [authCookie]);
 
@@ -81,6 +82,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
       })();
     }
   }, [tokenNeedsRefresh]);
+  
+  const createCookie = (data: any) => {
+    setAccessToken(data.accessToken);
+    setUser(data.user);
+    setAccessToken(data.refreshToken);
+    setCookie('Authorization',data);
+  }
 
   const value = useMemo(
     () => ({
@@ -88,6 +96,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       version,
       accessToken,
       refreshToken,
+      createCookie,
       setTokenNeedsRefresh,
       setAuthCookie,
       removeAuthCookie,

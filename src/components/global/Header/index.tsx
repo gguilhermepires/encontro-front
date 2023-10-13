@@ -2,7 +2,7 @@ import { Flex, HStack, Image, Link, Text } from '@chakra-ui/react';
 import { useLocation, Link as RouterLink } from 'react-router-dom';
 
 import logo from '../../../assets/schola-logo.jpeg';
-import { useAuth } from '../../../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthProvider';
 import { UserType } from '../../../types/auth';
 import Profile from './Profile';
 

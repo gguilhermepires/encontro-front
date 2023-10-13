@@ -1,13 +1,16 @@
 import { Flex, Text } from '@chakra-ui/react';
 
-import { useAuth } from '../../contexts/AuthContext';
+// import { useAuth } from '../../contexts/AuthContext';
 
 interface Props {
   sticky?: boolean;
 }
 
 function Version({ sticky = false }: Props) {
-  const { version } = useAuth();
+  // const { version } = useAuth();
+  const version = {
+    application: 1
+  };
 
   if (sticky) {
     return (

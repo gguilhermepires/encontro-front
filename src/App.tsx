@@ -16,7 +16,7 @@ import { detectLocale } from './i18n/i18n-util';
 import { loadLocale } from './i18n/i18n-util.sync';
 import { theme } from './styles/theme';
 import AppRoutes from './routes';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthProvider';
 import { pageTitlePrefix } from './utils/miscellaneous';
 
 function App() {

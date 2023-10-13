@@ -1,7 +1,7 @@
 import { Stack } from '@chakra-ui/react';
 import { useState } from 'react';
 
-import { useAuth } from '../../../../contexts/AuthContext';
+import { useAuth } from '../../../../contexts/AuthProvider';
 import ConfirmationModal from '../../ConfirmationModal';
 import OptionsMenu from './OptionsMenu';
 

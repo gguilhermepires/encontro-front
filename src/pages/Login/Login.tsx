@@ -16,9 +16,10 @@ import {
     Text,
 } from '@chakra-ui/react';
 import { useContext } from "react";
-// import { Context } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthProvider';
 
 export default function LoginPage() {
+    const { createCookie } = useAuth();
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -50,27 +51,26 @@ export default function LoginPage() {
                 // let create loader component
                 setShowHideLoader(true);
                 const reqBody = {
-                    "username": email,
+                    "email": email,
                     "password": password
                 }
-                // updateLoginContext( {
-                //     "username": email,
-                //     "password": password
-                // })
-                history('/')
-                // const response = await axios.post('http://localhost:3001/api/v1/login', reqBody);
-                // if (response) {
-                //     console.log('teste', response.data)
-                //     // here we need to store data as temp and navigate to home page
-                //     history.push({
-                //         pathname: '/home',
-                //         state: { userData: response.data }
-                //     });
+             
+                const response = await axios.post('http://localhost:3001/api/v1/login', reqBody);
+                if (response.status === 200 && response.data.code === 200) {
+                    createCookie(response.data.data);
+        
+                    console.log('teste', response.data);
+                    // here we need to store data as temp and navigate to home page
+                    // history.push({
+                    //     pathname: '/home',
+                    //     state: { userData: response.data }
+                    // });
+                // history('/'):
 
-                //     // now we navigated to home but with static data.
-                //     // let us go to home page.
-                //     // data will go to home page as props.
-                // }
+                    // now we navigated to home but with static data.
+                    // let us go to home page.
+                    // data will go to home page as props.
+                }
             }
 
         }

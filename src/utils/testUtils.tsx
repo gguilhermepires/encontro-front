@@ -7,7 +7,7 @@ import { render } from '@testing-library/react';
 import { ReactElement, ReactNode } from 'react';
 import { CookiesProvider } from 'react-cookie';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from '../contexts/AuthContext';
+import { AuthProvider } from '../contexts/AuthProvider';
 
 export function setAuthCookie() {
   beforeAll(() => {

@@ -4,18 +4,17 @@ import {
   Route,
   Routes as RoutesSwitch,
 } from 'react-router-dom';
-
-import { useAuth } from '../contexts/AuthContext';
 import { Health, Home, Login } from '../pages';
 import { UserType } from '../types/auth';
 import PageWithHeader from './PageWithHeader';
 import { setCookie } from '../utils/cookies';
+import { useAuth } from '../contexts/AuthProvider';
 
 function Routes() {
   const { user } = useAuth();
 
-  if (!user) setCookie('redirect', { pathname: 'login'});
-console.log('linha 18',user);
+  if (!user) setCookie('redirect', { pathname: 'login' });
+  console.log('linha 18', user);
   return (
     <BrowserRouter>
       <RoutesSwitch>
