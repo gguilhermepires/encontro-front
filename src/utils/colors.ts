@@ -18,7 +18,7 @@ function setBackgroundColorByPercentage(percentage: number) {
 function setColorByDate(date: string, isCustomFormat = false) {
   const currentDate = new Date();
 
-  let endDate: Date;
+  let endDate: Date | null;
 
   if (isCustomFormat) {
     endDate = newDateFromFormat(date);
@@ -29,7 +29,11 @@ function setColorByDate(date: string, isCustomFormat = false) {
   const endDateDecreasedDays = new Date(
     new Date(date).setDate(new Date(date).getDate() - 2)
   );
-
+  
+  if (endDate === null) {
+    throw new Error("date null");
+  }
+  
   if (currentDate > endDate) return 'red.500';
   if (currentDate >= endDateDecreasedDays && currentDate < endDate)
     return 'orange.500';

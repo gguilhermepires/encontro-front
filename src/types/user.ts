@@ -1,13 +1,12 @@
 /* eslint-disable import/no-cycle */
 
-import { Track, TrackDetailed } from './programme';
 
 export type User = {
   id: string;
   firstName: string;
   lastName: string;
   email: string;
-  type: 'TEACHER' | 'STAFF' | 'STUDENT';
+  type: 'CLIENT' | 'ADMIN';
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
@@ -76,9 +75,7 @@ export type StudentDetailed = {
       id: string;
       displayName: string;
       director: UserSnippet;
-      tracks: TrackDetailed[]; // list of tracks in this programme and which courses are in them
     };
-    track: Track; // The student track in the cohort
     recommendation: {
       status:
         | 'EN_FORMATION' // Ongoing (default)

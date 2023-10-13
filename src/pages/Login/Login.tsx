@@ -16,14 +16,14 @@ import {
     Text,
 } from '@chakra-ui/react';
 import { useContext } from "react";
-import { Context } from '../../contexts/AuthContext';
+// import { Context } from '../../contexts/AuthContext';
 
 export default function LoginPage() {
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loader, setShowHideLoader] = useState(false);
-    const { updateLoginContext} = useContext(Context);
+    // const { updateLoginContext} = useContext(Context);
 
     const formValidation = () => {
         let isValid = true;
@@ -53,10 +53,10 @@ export default function LoginPage() {
                     "username": email,
                     "password": password
                 }
-                updateLoginContext( {
-                    "username": email,
-                    "password": password
-                })
+                // updateLoginContext( {
+                //     "username": email,
+                //     "password": password
+                // })
                 history('/')
                 // const response = await axios.post('http://localhost:3001/api/v1/login', reqBody);
                 // if (response) {
@@ -77,7 +77,7 @@ export default function LoginPage() {
         catch (e) {
             // log error in case of invalid user login username and password
             // we will use Toaster to show the error to user
-            toast.error(e);
+            // toast.error(e);
         }
         finally {
             setShowHideLoader(false);

@@ -1,50 +1,61 @@
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
 
-import React from 'react';
-import './index.css';
-import { RouterProvider, createBrowserRouter }
-  from "react-router-dom";
-import HomePage from "./pages/Home/Home";
-import LoginV1Page from "./pages/LoginV1/LoginV1";
-import LoginPage from "./pages/Login/Login";
+import { useEffect, useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
-import { Context, AuthProvider } from './contexts/AuthContext';
-import { useContext } from "react";
+import { CookiesProvider } from 'react-cookie';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import smoothscroll from 'smoothscroll-polyfill';
+import { navigatorDetector } from 'typesafe-i18n/detectors';
 
+import TypesafeI18n from './i18n/i18n-react';
+import { detectLocale } from './i18n/i18n-util';
+import { loadLocale } from './i18n/i18n-util.sync';
+import { theme } from './styles/theme';
+import AppRoutes from './routes';
+import { AuthProvider } from './contexts/AuthContext';
+import { pageTitlePrefix } from './utils/miscellaneous';
 
 function App() {
-  // const {
-  //   isAuthenticated
-  // } = useContext(AuthProvider);
-  // const { isAuthenticated } = useContext(Context);
-  // console.log('linha 20', isAuthenticated);
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomePage />
-    },
-    {
-      path: "/loginV1",
-      element: <LoginV1Page />
-    },
-    {
-      path: "/login",
-      element: <LoginPage />
-    },
-    {
-      path: "*",
-      element: <LoginPage />
+  document.title = pageTitlePrefix();
 
-    }
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { staleTime: 1000 * 60, keepPreviousData: true },
+    },
+  });
 
-  ]);
+  // kick off the polyfill for smoothscroll support in safari
+  smoothscroll.polyfill();
+
+  const locale = detectLocale(navigatorDetector);
+
+  // Load locales
+  const [localesLoaded, setLocalsLoaded] = useState(false);
+
+  useEffect(() => {
+    loadLocale('en');
+    loadLocale('fr');
+    setLocalsLoaded(true);
+  }, [locale]);
+
+  if (!localesLoaded) return null;
 
   return (
-    <ChakraProvider>
-      <AuthProvider>
-        <React.StrictMode>
-          <RouterProvider router={router} />
-        </React.StrictMode>
-      </AuthProvider>
+    <ChakraProvider theme={theme}>
+      <QueryClientProvider contextSharing client={queryClient}>
+        <TypesafeI18n locale={locale}>
+          <CookiesProvider>
+            <AuthProvider>
+                <AppRoutes />
+            </AuthProvider>
+          </CookiesProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </TypesafeI18n>
+      </QueryClientProvider>
     </ChakraProvider>
   );
 }

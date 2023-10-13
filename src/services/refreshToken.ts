@@ -39,7 +39,10 @@ export async function refreshToken({
 
     throw new Error(data.message);
   }
-
+  if (data.data === undefined) {
+    throw new Error("data undefined");
+  }
+  
   const expires = new Date(data.data.refreshToken.expiresIn * 1000);
 
   setAuthCookie('Authorization', data.data, {

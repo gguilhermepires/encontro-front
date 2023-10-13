@@ -8,7 +8,6 @@ import { ReactElement, ReactNode } from 'react';
 import { CookiesProvider } from 'react-cookie';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from '../contexts/AuthContext';
-import { PagesProvider } from '../contexts/PagesContext';
 
 export function setAuthCookie() {
   beforeAll(() => {
@@ -55,9 +54,7 @@ export function renderWithClient(ui: ReactElement) {
       <QueryClientProvider client={testQueryClient}>
         <CookiesProvider>
           <AuthProvider>
-            <PagesProvider>
               <BrowserRouter>{ui}</BrowserRouter>
-            </PagesProvider>
           </AuthProvider>
         </CookiesProvider>
       </QueryClientProvider>
@@ -72,9 +69,7 @@ export function renderWithClient(ui: ReactElement) {
           <QueryClientProvider client={testQueryClient}>
             <CookiesProvider>
               <AuthProvider>
-                <PagesProvider>
                   <BrowserRouter>{rerenderUi}</BrowserRouter>
-                </PagesProvider>
               </AuthProvider>
             </CookiesProvider>
           </QueryClientProvider>
@@ -105,9 +100,7 @@ export function createWrapper() {
       <QueryClientProvider client={testQueryClient}>
         <CookiesProvider>
           <AuthProvider>
-            <PagesProvider>
               <BrowserRouter>{children}</BrowserRouter>
-            </PagesProvider>
           </AuthProvider>
         </CookiesProvider>
       </QueryClientProvider>
