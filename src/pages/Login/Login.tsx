@@ -44,7 +44,7 @@ export default function LoginPage() {
 
     const submitUserLogin = async () => {
         try {
-            
+
             // before submit, we need to check validation
             if (formValidation()) {
                 // we need to add loading spinner to wait server to response.
@@ -54,30 +54,18 @@ export default function LoginPage() {
                     "email": email,
                     "password": password
                 }
-             
+
                 const response = await axios.post('http://localhost:3001/api/v1/login', reqBody);
                 if (response.status === 200 && response.data.code === 200) {
                     createCookie(response.data.data);
-        
-                    console.log('teste', response.data);
-                    // here we need to store data as temp and navigate to home page
-                    // history.push({
-                    //     pathname: '/home',
-                    //     state: { userData: response.data }
-                    // });
-                // history('/'):
-
-                    // now we navigated to home but with static data.
-                    // let us go to home page.
-                    // data will go to home page as props.
+                    history('/home');
+                } else {
+                    toast.error('Email or password wrong');
                 }
             }
-
         }
-        catch (e) {
-            // log error in case of invalid user login username and password
-            // we will use Toaster to show the error to user
-            // toast.error(e);
+        catch (e: any) {
+            toast.error('Email or password wrong');
         }
         finally {
             setShowHideLoader(false);

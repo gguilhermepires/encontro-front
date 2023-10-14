@@ -14,7 +14,6 @@ function Routes() {
   const { user } = useAuth();
 
   if (!user) setCookie('redirect', { pathname: 'login' });
-  console.log('linha 18', user);
   return (
     <BrowserRouter>
       <RoutesSwitch>
@@ -24,7 +23,7 @@ function Routes() {
               path="*"
               element={
                 <Navigate
-                  to='login'
+                  to='/home'
                 />
               }
             />
@@ -32,6 +31,9 @@ function Routes() {
               <Route>
                 <Route path="login">
                   <Route index element={<Login />} />
+                </Route>
+                <Route path="home">
+                  <Route index element={<Home />} />
                 </Route>
               </Route>
             ) : user?.roles[0] === UserType.ADMIN ? (

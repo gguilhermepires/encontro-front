@@ -1,6 +1,6 @@
 export enum UserType {
-  CLIENT = 'client',
-  ADMIN = 'admin',
+  CLIENT = '0',
+  ADMIN = '1',
 }
 
 export type User = {

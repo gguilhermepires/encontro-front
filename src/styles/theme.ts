@@ -37,15 +37,6 @@ export const theme = extendTheme({
     xl: '1.35rem',
     '2xl': '1.62rem',
   },
-  // fontSizes: {
-  //   // 5% increase
-  //   xs: '0.787rem',
-  //   sm: '0.919rem',
-  //   md: '1.05rem',
-  //   lg: '1.181rem',
-  //   xl: '1.312rem',
-  //   '2xl': '1.575rem',
-  // },
   fonts: {
     heading: 'Poppins, sans-serif',
     body: 'Poppins, sans-serif',
@@ -155,7 +146,7 @@ export const theme = extendTheme({
   components: {
     Text,
     Heading,
-    Button,
+    // Button,
     Input,
     Textarea,
     Checkbox,
