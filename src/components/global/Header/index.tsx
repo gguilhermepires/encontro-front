@@ -1,34 +1,20 @@
 import { Flex, HStack, Image, Link, Text } from '@chakra-ui/react';
 import { useLocation, Link as RouterLink } from 'react-router-dom';
 
-import logo from '../../../assets/schola-logo.jpeg';
+import logo from '../../../assets/schola-logo2.jpeg';
 import { useAuth } from '../../../contexts/AuthProvider';
 import { UserType } from '../../../types/auth';
 import Profile from './Profile';
-
+interface IMenuItem {
+  title: string,
+  route: string,
+}
 function Header() {
   const { pathname } = useLocation();
 
   const { user } = useAuth();
 
-  const menuItems = [
-    {
-      title: 'Programmes',
-      route: '/programmes',
-    },
-    {
-      title: 'Courses',
-      route: '/courses',
-    },
-    {
-      title: 'Course Sessions',
-      route: '/course-sessions',
-    },
-    {
-      title: 'Students',
-      route: '/students',
-    },
-  ];
+  const menuItems: IMenuItem[]= [];
 
   return (
     <Flex
@@ -78,7 +64,7 @@ function Header() {
               left="0"
               bg="white"
             >
-              {menuItems.map((item) => (
+              {menuItems.map((item: IMenuItem) => (
                 <Link
                   role="group"
                   as={RouterLink}
